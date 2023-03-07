@@ -1,4 +1,4 @@
-package com.g3.CPEN431.project.Test;
+package project.Test;
 
 public class OutcomePair {
     public enum Status {

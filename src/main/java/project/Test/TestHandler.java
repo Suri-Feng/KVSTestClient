@@ -1,21 +1,17 @@
-package com.g3.CPEN431.project.Test;
+package project.Test;
 
 import ca.NetSysLab.ProtocolBuffers.KeyValueRequest;
-import com.g3.CPEN431.project.Client.UDPClient;
-import com.g3.CPEN431.project.Client.UDPClientList;
-import com.g3.CPEN431.project.ServerInfo.Server;
-import com.g3.CPEN431.project.ServerInfo.ServerList;
+import project.Client.MessageBuilder;
+import project.Client.UDPClient;
+import project.Client.UDPClientList;
+import project.ServerInfo.Server;
+import project.ServerInfo.ServerList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-import java.util.logging.Logger;
 
-import static com.g3.CPEN431.project.Client.MessageBuilder.Commands;
-import static com.g3.CPEN431.project.Client.MessageBuilder.buildKVRequest;
-import static com.g3.CPEN431.project.Test.OutcomePair.Status.PROCESSCONTROL;
+import static project.Client.MessageBuilder.buildKVRequest;
 
 
 public class TestHandler {
@@ -24,9 +20,9 @@ public class TestHandler {
     public UDPClientList clientList;
 
 
-    public TestHandler () throws IOException, InterruptedException {
-        this.serverList = new ServerList("/Users/suri/Desktop/CPEN431/test/servers.txt");
-        this.clientList = new UDPClientList(1);
+    public TestHandler (String serverList, int numClient) throws IOException, InterruptedException {
+        this.serverList = new ServerList(serverList);
+        this.clientList = new UDPClientList(numClient);
     }
 
     public void printOutcome(OutcomePair outcomePair) {
@@ -34,37 +30,37 @@ public class TestHandler {
         System.out.println("[ " + outcomePair.getStatus() + ", " + outcomePair.getValue() + "]");
     }
     public OutcomePair put(UDPClient client, Server server, String key, String val, int version) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.PUT, key, val, version);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.PUT, key, val, version);
         return client.run(server, request);
     }
 
     public OutcomePair get(UDPClient client, Server server, String key) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.GET, key);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.GET, key);
         return client.run(server, request);
     }
 
     public OutcomePair remove(UDPClient client, Server server, String key) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.REMOVE, key);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.REMOVE, key);
         return client.run(server, request);
     }
 
     public OutcomePair shutdown(UDPClient client, Server server) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.SHUTDOWN);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.SHUTDOWN);
         return client.run(server, request); // retry 3 times, should receive timeout
     }
 
     public OutcomePair isAlive(UDPClient client, Server server) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.IS_ALIVE);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.IS_ALIVE);
         return client.run(server, request); // should receive success
     }
 
     public OutcomePair wipeOut(UDPClient client, Server server) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.WIPE_OUT);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.WIPE_OUT);
         return client.run(server, request); // should receive success
     }
 
     public OutcomePair getPid(UDPClient client, Server server) throws IOException, InterruptedException {
-        KeyValueRequest.KVRequest request = buildKVRequest(Commands.GET_PID);
+        KeyValueRequest.KVRequest request = MessageBuilder.buildKVRequest(MessageBuilder.Commands.GET_PID);
         return client.run(server, request);
     }
 
@@ -106,7 +102,7 @@ public class TestHandler {
         //TODO
         //KeyValueRequest.KVRequest request = buildKVRequest(Commands.SHUTDOWN);
         //return client.run(server, request);
-        return new OutcomePair(PROCESSCONTROL, "Shut down");
+        return new OutcomePair(OutcomePair.Status.PROCESSCONTROL, "Shut down");
     }
 
     public OutcomePair processControlResume(UDPClient client, Server server) throws IOException, InterruptedException {
@@ -122,7 +118,7 @@ public class TestHandler {
 //        proc.waitFor();
 //        KeyValueRequest.KVRequest request = buildKVRequest(Commands.IS_ALIVE); //TODO
 //        return client.run(server, request);
-        return new OutcomePair(PROCESSCONTROL, "Resume");
+        return new OutcomePair(OutcomePair.Status.PROCESSCONTROL, "Resume");
     }
 
 

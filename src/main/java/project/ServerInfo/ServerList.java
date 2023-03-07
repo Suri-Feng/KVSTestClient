@@ -1,4 +1,4 @@
-package com.g3.CPEN431.project.ServerInfo;
+package project.ServerInfo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

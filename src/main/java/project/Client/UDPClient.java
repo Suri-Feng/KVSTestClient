@@ -1,18 +1,18 @@
-package com.g3.CPEN431.project.Client;
+package project.Client;
 
 import ca.NetSysLab.ProtocolBuffers.KeyValueRequest;
 import ca.NetSysLab.ProtocolBuffers.KeyValueResponse;
 import ca.NetSysLab.ProtocolBuffers.Message;
-import com.g3.CPEN431.project.ServerInfo.Server;
-import com.g3.CPEN431.project.Test.OutcomePair;
+import project.Utils.NetUtils;
+import project.ServerInfo.Server;
+import project.Test.OutcomePair;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.io.IOException;
 import java.net.*;
 
-import static com.g3.CPEN431.project.Client.MessageBuilder.buildKVRequest;
-import static com.g3.CPEN431.project.Utils.NetUtils.*;
+import static project.Client.MessageBuilder.buildKVRequest;
 import static java.lang.Thread.sleep;
 
 public class UDPClient {
@@ -45,7 +45,7 @@ public class UDPClient {
             //System.out.println("======Number of retries: " + retries + "=====");
 
             if (retries == 0) {
-                messageID = generateMessageID(socket);
+                messageID = NetUtils.generateMessageID(socket);
                 packet = pack(server, request);
             }
             socket.send(packet);
@@ -102,7 +102,7 @@ public class UDPClient {
         Message.Msg msg = Message.Msg.newBuilder()
                 .setMessageID(messageID)
                 .setPayload(request.toByteString())
-                .setCheckSum(getChecksum(messageID.toByteArray(), request.toByteArray()))
+                .setCheckSum(NetUtils.getChecksum(messageID.toByteArray(), request.toByteArray()))
                 .build();
 
         return new DatagramPacket(msg.toByteArray(), msg.getSerializedSize(), server.getAddress(), server.getPort());
@@ -155,7 +155,7 @@ public class UDPClient {
         }
 
         // Check checksum
-        if (recvChecksum != getChecksum(recvMessageID.toByteArray(), resPayload.toByteArray())) {
+        if (recvChecksum != NetUtils.getChecksum(recvMessageID.toByteArray(), resPayload.toByteArray())) {
             System.out.println("Exception: Received checksum is not the same.");
             return null;
         }

@@ -81,7 +81,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.g3.CPEN431.A7.App</mainClass>
+              <mainClass>project.TestStopAndResume</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>

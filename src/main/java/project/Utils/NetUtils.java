@@ -1,7 +1,6 @@
-package com.g3.CPEN431.project.Utils;
+package project.Utils;
 
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Message;
 
 import java.net.DatagramSocket;
 import java.util.Random;

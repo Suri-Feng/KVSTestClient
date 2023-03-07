@@ -1,4 +1,4 @@
-package com.g3.CPEN431.project.Client;
+package project.Client;
 
 import ca.NetSysLab.ProtocolBuffers.KeyValueRequest;
 import com.google.protobuf.ByteString;

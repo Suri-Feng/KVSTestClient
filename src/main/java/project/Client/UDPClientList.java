@@ -1,6 +1,4 @@
-package com.g3.CPEN431.project.Client;
-
-import com.g3.CPEN431.project.ServerInfo.Server;
+package project.Client;
 
 import java.io.IOException;
 import java.util.ArrayList;

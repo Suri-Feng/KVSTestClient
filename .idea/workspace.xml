@@ -6,6 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="8ee8b0d0-a681-41e2-86c1-cba4b37f5c55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/g3/CPEN431/A7/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/g3/CPEN431/A7/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Client/MessageBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Client/MessageBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Client/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Client/UDPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Client/UDPClientList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Client/UDPClientList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/ServerInfo/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/ServerInfo/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/ServerInfo/ServerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/ServerInfo/ServerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Test/OutcomePair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Test/OutcomePair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Test/TestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Test/TestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Test/TestThroughput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Test/TestThroughput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/TestCorrectness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/TestCorrectness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/TestShutDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/TestShutDown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/TestStopAndResume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/TestStopAndResume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Utils/ByteOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Utils/ByteOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Utils/NetUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Utils/NetUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/Utils/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/project/Utils/StringUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
