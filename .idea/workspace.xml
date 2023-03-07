@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8ee8b0d0-a681-41e2-86c1-cba4b37f5c55" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/TestStopAndResume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/g3/CPEN431/project/TestStopAndResume.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
       <recent name="com.s42442146.CPEN431.A4.Utility" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestStopAndResume.StopAndResumeWithGet">
+  <component name="RunManager" selected="JUnit.TestStopAndResume.StopAndResume">
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.s42442146.CPEN431.A4.App" />
       <module name="cpen431_2023_project_g3" />
@@ -171,8 +170,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestStopAndResume.StopAndResumeWithGet" />
         <item itemvalue="JUnit.TestStopAndResume.StopAndResume" />
+        <item itemvalue="JUnit.TestStopAndResume.StopAndResumeWithGet" />
         <item itemvalue="JUnit.TestStopAndResume" />
         <item itemvalue="JUnit.TestCorrectness.OneClientOneServer" />
         <item itemvalue="JUnit.TestCrash.StopAndResume" />
