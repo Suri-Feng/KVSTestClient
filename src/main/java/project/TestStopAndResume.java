@@ -49,27 +49,46 @@ public class TestStopAndResume {
     public static void StopAndResumeWithGet(String serverList) throws IOException, InterruptedException {
         TestHandler testHandler = new TestHandler(serverList, 1);
         UDPClient client = testHandler.clientList.getFirstClient();
-        Server server = testHandler.serverList.getFirstServer();
+        ArrayList<Server> servers = testHandler.serverList.servers;
 
-        OutcomePair outcome1 = testHandler.getPid(client, server);
-        testHandler.printOutcome(outcome1); // Expect SUCCESS
+        Server server0= servers.get(0);
+        //OutcomePair outcome2 = testHandler.put(client, server0, "K1", "1", 0);
+        //testHandler.printOutcome(outcome2); // EXPECT [K-N-F, NULL], [TIMEOUT, NULL], [SUCCESS, NULL]
+        //OutcomePair outcome3 = testHandler.get(client, server0, "K1");
+        //testHandler.printOutcome(outcome3); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+        OutcomePair outcome22 = testHandler.put(client, server0, "K1", "2", 0);
+        testHandler.printOutcome(outcome22); // EXPECT [K-N-F, NULL], [TIMEOUT, NULL], [SUCCESS, NULL]
+        OutcomePair outcome33 = testHandler.get(client, server0, "K1");
+        testHandler.printOutcome(outcome33); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
 
-        OutcomePair outcome2 = testHandler.put(client, server, "K1", "1", 0);
-        testHandler.printOutcome(outcome2); // EXPECT [K-N-F, NULL], [TIMEOUT, NULL], [SUCCESS, NULL]
-        OutcomePair outcome3 = testHandler.get(client, server, "K1");
-        testHandler.printOutcome(outcome3); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+        for (Server server: servers) {
+            OutcomePair outcome1 = testHandler.getPid(client, server);
+            testHandler.printOutcome(outcome1); // Expect SUCCESS
+            OutcomePair outcome4 = testHandler.processControlShutDown(client, server);
+            Thread.sleep(1000);
+            testHandler.printOutcome(outcome4); // Expect TIMEOUT
 
-        OutcomePair outcome4 = testHandler.processControlShutDown(client, server);
-        Thread.sleep(1000);
-        testHandler.printOutcome(outcome4); // Expect TIMEOUT
-        OutcomePair outcome5 = testHandler.get(client, server, "K1");
-        testHandler.printOutcome(outcome5); // EXPECT TIMEOUT
+            for (Server anotherServer: servers) {
+                if (anotherServer.getPort() != server.getPort()) {
+                    //OutcomePair outcome7 = testHandler.get(client, anotherServer, "K1");
+                    //testHandler.printOutcome(outcome7); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+                    OutcomePair outcome8 = testHandler.get(client, anotherServer, "K1");
+                    testHandler.printOutcome(outcome8); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+                }
+            }
 
+            OutcomePair outcome6 = testHandler.processControlResume(client, server);
+            Thread.sleep(1000);
+            testHandler.printOutcome(outcome6); // Expect TIMEOUT
 
-        OutcomePair outcome6 = testHandler.processControlResume(client, server);
-        Thread.sleep(1000);
-        testHandler.printOutcome(outcome6); // Expect TIMEOUT
-        OutcomePair outcome7 = testHandler.get(client, server, "K1");
-        testHandler.printOutcome(outcome7); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+            for (Server anotherServer: servers) {
+                //OutcomePair outcome7 = testHandler.get(client, anotherServer, "K1");
+                //testHandler.printOutcome(outcome7); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+                OutcomePair outcome8 = testHandler.get(client, anotherServer, "K1");
+                testHandler.printOutcome(outcome8); // EXPECT GET(K1) -> [TIMEOUT, NULL], [K-N-F, NULL]
+            }
+
+        }
+
     }
  }
